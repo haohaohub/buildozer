@@ -35,6 +35,13 @@ jobs:
         brew install automake
         sudo ln -sfn /usr/local/opt/openssl /usr/local/ssl
     - name: buildozer android debug
+      env:
+        SRC: ${{ secrets.SRC }}
+        DST: ${{ secrets.DST }}
       run: |
         touch main.py
         buildozer android debug
+    - uses: actions/upload-artifact@v1
+      with:
+        name: debug.apk
+        path: apks
