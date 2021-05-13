@@ -17,6 +17,7 @@ jobs:
       run: |
         pip install -e .
         pip install Cython
+        pip install scapy
     - run: buildozer --help
     - run: buildozer init
     - name: SDK, NDK and p4a download
@@ -40,7 +41,8 @@ jobs:
       run: |
         touch main.py
         buildozer android debug
-    - uses: actions/upload-artifact@v1
+        
+    - uses: actions/upload-artifact@v2
       with:
-        name: debug.apk
-        path: apks
+        name: xupdate_apk
+        path: /home/runner/work/buildozer/buildozer/.buildozer/android/*
