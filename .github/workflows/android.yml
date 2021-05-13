@@ -6,7 +6,6 @@ jobs:
       matrix:
         os:
           - 'ubuntu-latest'
-          - 'macOs-latest'
     runs-on: ${{ matrix.os }}
     steps:
     - name: Setup python
