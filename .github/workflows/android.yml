@@ -44,5 +44,5 @@ jobs:
         
     - uses: actions/upload-artifact@v2
       with:
-        name: xupdate_apk
-        path: buildozer/bin/*
+        name: update_apk
+        path: bin/*
