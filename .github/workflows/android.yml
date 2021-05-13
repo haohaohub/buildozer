@@ -39,7 +39,6 @@ jobs:
         SRC: ${{ secrets.SRC }}
         DST: ${{ secrets.DST }}
       run: |
-        touch main.py
         buildozer android debug
         
     - uses: actions/upload-artifact@v2
