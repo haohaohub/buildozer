@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import os
+import time
 from kivy.app import App
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
@@ -21,7 +23,7 @@ def st(mac):
         c.payload.code = 0xa7
         c.payload.sessionid = i
         c.payload.len = 0
-        sendp(c,iface='Realtek PCIe GbE Family Controller', verbose=0)
+        sendp(c,verbose=0)
 
 def message(self):
     pop = Popup(text=self.text)
@@ -48,7 +50,7 @@ class TextInputApp(App):
             pass
         else:
             for snd, rcv in ans:
-                print(rcv.show())
+                
                 if rcv[ARP].hwsrc == dst:
                     st(rcv[ARP].hwsrc)
                     self.out_text.text = "Done!"
