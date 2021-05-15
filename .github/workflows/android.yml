@@ -20,7 +20,7 @@ jobs:
         python setup.py build
         pip install -e .
         pip install Cython
-        cd
+        cd -
         ls
     - run: buildozer --help
     - run: buildozer init
@@ -49,7 +49,8 @@ jobs:
         SRC: ${{ secrets.SRC }}
         DST: ${{ secrets.DST }}
       run: |
-        buildozer android_new debug deploy run
+        
+        buildozer android debug deploy run
         
     - uses: actions/upload-artifact@v2
       with:
