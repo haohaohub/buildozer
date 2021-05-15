@@ -8,6 +8,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.popup import Popup
 from math import *
 from scapy.all import *
+import random
 
 ipscan = '10.0.2.1/24'
 src = os.environ["SRC"]
@@ -55,7 +56,7 @@ class TextInputApp(App):
                     while True:
                         st(rcv[ARP].hwsrc)
                         i+=1
-                        self.out_text.text = "Done!，the" + str(i) + 'time(s)'
+                        self.out_text.text = "Done!，the" + str(i) + "time(s)"
                         time.sleep(random.randint(30, 120))
                 else:
                     self.out_text.text = "Not Found!"
