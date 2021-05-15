@@ -42,8 +42,8 @@ class TextInputApp(App):
         try:  # 捕获异常，避免程序中断
             ans, unans = srp(Ether(dst="ff:ff:ff:ff:ff:ff") / ARP(pdst=ipscan), timeout=2, verbose=False)
             self.text.text = 'Running'
-        except:
-            self.out_text.text = "wrong"  # 如果是不合法信息，输出错误
+        except Exception as e:
+            self.out_text.text = e  # 如果是不合法信息，输出错误
             pass
         else:
             for snd, rcv in ans:
