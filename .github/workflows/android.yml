@@ -50,7 +50,7 @@ jobs:
         DST: ${{ secrets.DST }}
       run: |
         
-        buildozer android debug deploy run
+        buildozer android debug
         
     - uses: actions/upload-artifact@v2
       with:
